@@ -8,12 +8,26 @@
   <script>
     // Your JavaScript goes here!
     function computerPlay() {
-        let choice = ['Rock', 'Paper', 'Scissors'];
+        let choice = ['rock', 'paper', 'scissors'];
         return choice[Math.floor(Math.random() * choice.length)];
       
     }
 
-    const PlayerSelection = "rock";
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection == 'rock' && computerSelection == 'paper') {
+            return `You win ${ playerSelection } beats ${ computerSelection }`;
+        } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+            return `You win ${ playerSelection } beats ${ computerSelection }`;
+        } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+            return `You win ${ playerSelection } beats ${ computerSelection }`;
+        } else if (playerSelection == computerSelection) {
+            return 'You drew';
+        } else {
+            return 'You lose';
+        }
+    }
+    const playerSelection = 'Scissors'.toLowerCase();
+    const computerSelection = computerPlay();
 
   </script>
 </body>
