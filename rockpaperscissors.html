@@ -15,10 +15,10 @@
         
       
     }
-
+    // rock, paper, scissors primary game logic engine
     function playRound(playerSelection, computerSelection) {
         
-        if (playerSelection == 'rock' && computerSelection == 'paper') {
+        if (playerSelection == 'rock' && computerSelection == 'scissors') {
             playerWins++;
             console.log(`You win - ${ playerSelection } beats ${ computerSelection }`);
             return;
@@ -39,21 +39,23 @@
             return;
         }
     }
-
+    // Function that plays the games. Play it 5 times, calculate the winner.
     function game() {
         for (let counter = 0; counter <= 4; counter++){
             let playerSelection = prompt("Please input your choice").toLowerCase();
             let computerSelection = computerPlay();
             playRound(playerSelection, computerSelection);
-            console.log(`You won ${ playerWins } times and the computer won ${ computerWins }`);
+            
             if (playerWins > computerWins && counter >= 4) {
-                console.log("Player wins!");
+                console.log(`Player wins! \nPlayer Total: ${ playerWins } \nComputer total: ${ computerWins }`);
             } else if (computerWins > playerWins && counter >=4){
-                console.log("Computer wins!");
+                console.log(`You won ${ playerWins } times and the computer won ${ computerWins }`);
+            } else {
+                console.log(`You won ${ playerWins } times and the computer won ${ computerWins }`);
             }
         }
-        playerWins = 0;
-        computerWins = 0;
+        playerWins = 0; // reset playerWins to zero after for loop
+        computerWins = 0; // reset computerWins to zero after for llop
     }
 
 
