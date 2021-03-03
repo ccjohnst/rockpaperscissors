@@ -7,27 +7,55 @@
 <body>
   <script>
     // Your JavaScript goes here!
+    let playerWins = 0;
+    let computerWins = 0;
     function computerPlay() {
         let choice = ['rock', 'paper', 'scissors'];
         return choice[Math.floor(Math.random() * choice.length)];
+        
       
     }
 
     function playRound(playerSelection, computerSelection) {
+        
         if (playerSelection == 'rock' && computerSelection == 'paper') {
-            return `You win ${ playerSelection } beats ${ computerSelection }`;
+            playerWins++;
+            console.log(`You win - ${ playerSelection } beats ${ computerSelection }`);
+            return;
         } else if (playerSelection == 'paper' && computerSelection == 'rock') {
-            return `You win ${ playerSelection } beats ${ computerSelection }`;
+            playerWins++;
+            console.log(`You win - ${ playerSelection } beats ${ computerSelection }`);
+            return;
         } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-            return `You win ${ playerSelection } beats ${ computerSelection }`;
+            playerWins++;
+            console.log(`You win - ${ playerSelection } beats ${ computerSelection }`);
+            return;
         } else if (playerSelection == computerSelection) {
-            return 'You drew';
+            console.log('You drew');
+            return;
         } else {
-            return 'You lose';
+            computerWins++;
+            console.log(`You lose - ${ computerSelection } beats ${ playerSelection} `);
+            return;
         }
     }
-    const playerSelection = 'Scissors'.toLowerCase();
-    const computerSelection = computerPlay();
+
+    function game() {
+        for (let counter = 0; counter <= 4; counter++){
+            let playerSelection = prompt("Please input your choice").toLowerCase();
+            let computerSelection = computerPlay();
+            playRound(playerSelection, computerSelection);
+            console.log(`You won ${ playerWins } times and the computer won ${ computerWins }`);
+            if (playerWins > computerWins && counter >= 4) {
+                console.log("Player wins!");
+            } else if (computerWins > playerWins && counter >=4){
+                console.log("Computer wins!");
+            }
+        }
+        playerWins = 0;
+        computerWins = 0;
+    }
+
 
   </script>
 </body>
